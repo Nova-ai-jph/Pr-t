@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Bank Démo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f7f5;color:#17231e}
+.banner{background:#101b16;color:#fff;text-align:center;padding:10px;font-size:12px;font-weight:bold}
+header{background:#fff;border-bottom:1px solid #dce7e1;padding:15px 5%;position:sticky;top:0;z-index:10}
+.head{display:flex;align-items:center;justify-content:space-between}.brand{font-size:20px;font-weight:900;color:#087443}.brand span{font-size:11px;color:#555}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}button{border:0;border-radius:10px;padding:11px 15px;font-weight:bold;cursor:pointer}
+.primary{background:#087443;color:#fff}.secondary{background:#e2eee8;color:#075b36}.danger{background:#f5dddd;color:#8c2424}
+main{max-width:1100px;margin:28px auto;padding:0 18px;min-height:70vh}.page{display:none}.page.active{display:block}
+.card{background:#fff;border:1px solid #dfeae5;border-radius:18px;padding:24px;margin-bottom:18px;box-shadow:0 7px 22px #163c2a0b}
+.hero{padding:45px;background:linear-gradient(135deg,#fff,#e5f4ec)}h1{font-size:clamp(30px,5vw,54px);max-width:780px;margin:10px 0}
+h2{font-size:30px}p{line-height:1.6;color:#52635b}.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:900;color:#087443}
+.grid{display:grid;gap:16px}.two{grid-template-columns:repeat(2,1fr)}.three{grid-template-columns:repeat(3,1fr)}
+label{display:flex;flex-direction:column;gap:7px;font-weight:bold;font-size:14px}input,select{width:100%;padding:12px;border:1px solid #cddbd4;border-radius:9px;background:#fff;font:inherit}
+.full{width:100%}.span2{grid-column:span 2}.narrow{max-width:600px;margin:auto}.demo{background:#f0f7f3;border:1px dashed #7eab95;padding:16px;border-radius:12px;margin-top:15px;line-height:1.7}
+.message{font-weight:bold}.success{border-top:5px solid #087443}.big{font-size:30px;font-weight:900;margin:8px 0}
+.balance{background:#087443;color:white;border-radius:16px;padding:25px;margin:20px 0}.balance small,.balance strong{display:block}.balance strong{font-size:34px;margin-top:6px}
+.pill{display:inline-block;background:#e2f1e8;color:#087443;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:bold}
+.section-head{display:flex;justify-content:space-between;align-items:center}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stats div{padding:20px;background:#f0f6f3;border-radius:14px}.stats b,.stats small{display:block}.stats b{font-size:28px}
+table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:12px;border-bottom:1px solid #e4ebe7;text-align:left}
+.tiny{padding:7px 9px;font-size:12px;background:#dcece4}.hidden{display:none}.actions{display:flex;gap:10px;margin-top:22px}
+footer{text-align:center;padding:25px;color:#64746d;font-size:12px}
+@media(max-width:750px){.head{display:block}nav{overflow:auto;flex-wrap:nowrap}nav button{white-space:nowrap}.hero{padding:28px}.two,.three,.stats{grid-template-columns:1fr}.span2{grid-column:auto}h1{font-size:34px}.card{padding:18px}.actions{flex-direction:column}.actions button{width:100%}table{display:block;overflow:auto;white-space:nowrap;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="banner">⚠️ SITE DE DÉMONSTRATION — AUCUN PRÊT RÉEL — AUCUN PAIEMENT RÉEL</div>
+
+<header>
+<div class="head">
+<div class="brand">NOVA BANK <span>DÉMO</span></div>
+<nav>
+<button data-page="home">Accueil</button>
+<button data-page="simulator">Simulation</button>
+<button data-page="loan">Demande</button>
+<button data-page="client">Espace client</button>
+<button data-page="adminLogin">Administration</button>
+</nav>
+</div>
+</header>
+
+<main>
+
+<section id="home" class="page active">
+<div class="hero card">
+<p class="eyebrow">SERVICE FINANCIER FICTIF</p>
+<h1>Une expérience de prêt pour apprendre à créer un site bancaire.</h1>
+<p>Simulez un prêt, remplissez un dossier de démonstration et explorez un espace client et administrateur entièrement fictifs.</p>
+<div class="actions">
+<button class="primary" data-page="simulator">Simuler un prêt</button>
+<button class="secondary" data-page="login">Se connecter</button>
+</div>
+</div>
+<div class="grid three">
+<div class="card"><b>Simulation</b><p>Calculez automatiquement une mensualité et un tableau d'amortissement.</p></div>
+<div class="card"><b>Dossier démo</b><p>Testez un formulaire avec des fichiers de test.</p></div>
+<div class="card"><b>Administration</b><p>Explorez une console fictive de gestion.</p></div>
+</div>
+</section>
+
+<section id="login" class="page">
+<div class="card narrow">
+<h2>Connexion démo</h2>
+<p>Utilisez uniquement les identifiants de test.</p>
+<form id="loginForm">
+<label>E-mail<input type="email" id="email" required></label><br>
+<label>Mot de passe<input type="password" id="password" required></label><br>
+<button class="primary full">Se connecter</button>
+</form>
+<div class="demo"><b>Compte client :</b><br>client@nova-demo.test / demo123<br><br>
+<b>Compte administrateur :</b><br>admin@nova-demo.test / admin123</div>
+<p id="loginMsg" class="message"></p>
+</div>
+</section>
+
+<section id="simulator" class="page">
+<div class="card">
+<h2>Simulation de prêt</h2>
+<div class="grid three">
+<label>Montant
+<select id="amount"><option value="100000">100 000 FCFA</option><option value="250000">250 000 FCFA</option><option value="500000">500 000 FCFA</option><option value="1000000">1 000 000 FCFA</option><option value="2000000">2 000 000 FCFA</option></select>
+</label>
+<label>Durée
+<select id="duration"><option value="6">6 mois</option><option value="12">12 mois</option><option value="18">18 mois</option><option value="24">24 mois</option><option value="36">36 mois</option></select>
+</label>
+<label>Intérêt annuel démo (%)<input id="rate" type="number" value="12" min="0" step=".1"></label>
+</div><br>
+<button class="primary" id="calc">Cliquez ici pour calculer le tableau d'amortissement</button>
+<div id="results" class="hidden"></div>
+</div>
+</section>
+
+<section id="loan" class="page">
+<div class="card">
+<h2>Demande de prêt — démonstration</h2>
+<form id="loanForm" class="grid two">
+<label>Nom et prénom<input required name="name"></label>
+<label>Date de naissance<input required type="date" name="dob"></label>
+<label>Pays<input required name="country" value="Bénin"></label>
+<label>Adresse e-mail<input required type="email" name="mail"></label>
+<label>Date de réception du salaire<input required type="date" name="salaryDate"></label>
+<label>Montant du salaire (FCFA)<input required type="number" min="0" name="salary"></label>
+<label>Numéro WhatsApp<input required name="whatsapp" placeholder="+229 ..."></label>
+<label>Photo de pièce d'identité (fichier de test)<input required type="file" accept="image/*"></label>
+<div class="span2"><button class="primary">Confirmer les informations</button></div>
+</form>
+<div id="loanStatus"></div>
+</div>
+</section>
+
+<section id="approved" class="page">
+<div class="card narrow success">
+<h2>🎉 Demande approuvée — DÉMO</h2>
+<p>Votre dossier de démonstration est accepté.</p>
+<div class="demo">
+<b>Frais fictifs de démonstration</b>
+<div class="big">0 FCFA</div>
+Nom : Démo Nova<br>
+Numéro de compte : 0000****00000***00<br>
+Banque : Nova Bank Démo
+</div><br>
+<label>Insérer ou télécharger une photo de reçu démo<input type="file" id="receipt" accept="image/*"></label><br>
+<button class="secondary" data-page="client">Accéder à l'espace client démo</button>
+</div>
+</section>
+
+<section id="client" class="page">
+<div class="card">
+<div class="section-head"><div><p class="eyebrow">COMPTE FICTIF</p><h2>Espace client</h2></div><span class="pill">ACTIF</span></div>
+<div class="balance"><small>Solde démo</small><strong>1 250 000 FCFA</strong></div>
+<div class="grid three">
+<div class="card"><b>Faire un dépôt</b><br><br><input type="number" placeholder="Montant démo"><br><br><input type="file" accept="image/*"><br><br><button class="secondary client-action">Envoyer</button></div>
+<div class="card"><b>Faire un virement</b><br><br><input placeholder="Bénéficiaire démo"><br><br><input type="number" placeholder="Montant démo"><br><br><button class="secondary client-action">Effectuer</button></div>
+<div class="card"><b>Retrait démo</b><br><br><input type="number" placeholder="Montant démo"><br><br><button class="secondary client-action">Demander</button></div>
+</div>
+<h3>Historique</h3>
+<table><tr><th>Date</th><th>Opération</th><th>Montant</th><th>Statut</th></tr>
+<tr><td>17/09/2026</td><td>Dépôt démo</td><td>+250 000 FCFA</td><td><span class="pill">Accepté</span></td></tr>
+<tr><td>15/09/2026</td><td>Virement démo</td><td>-75 000 FCFA</td><td>Terminé</td></tr></table>
+<p id="clientMsg" class="message"></p>
+</div>
+</section>
+
+<section id="adminLogin" class="page">
+<div class="card narrow">
+<h2>Connexion administrateur démo</h2>
+<form id="adminForm">
+<label>E-mail<input id="adminEmail" type="email" required></label><br>
+<label>Mot de passe<input id="adminPass" type="password" required></label><br>
+<button class="primary full">Accéder à l'administration</button>
+</form>
+<div class="demo">E-mail : admin@nova-demo.test<br>Mot de passe : admin123</div>
+<p id="adminMsg" class="message"></p>
+</div>
+</section>
+
+<section id="admin" class="page">
+<div class="card">
+<div class="section-head"><div><p class="eyebrow">CONSOLE FICTIVE</p><h2>Administration démo</h2></div><span class="pill">ADMIN</span></div>
+<div class="stats"><div><b>12</b><small>Nouveaux clients</small></div><div><b>38</b><small>Clients actifs</small></div><div><b>3</b><small>Suspendus</small></div><div><b>7</b><small>Dépôts en attente</small></div></div>
+<h3>Nouveaux clients de démonstration</h3>
+<table><tr><th>Client</th><th>Pays</th><th>Dossier</th><th>Statut</th><th>Actions</th></tr>
+<tr><td>Amadou Demo</td><td>Bénin</td><td>#D001</td><td>En analyse</td><td><button class="tiny admin-action">Accepter</button> <button class="tiny danger admin-action">Suspendre</button></td></tr>
+<tr><td>Sarah Exemple</td><td>Togo</td><td>#D002</td><td>En attente</td><td><button class="tiny admin-action">Accepter</button> <button class="tiny danger admin-action">Suspendre</button></td></tr></table>
+<h3>Documents et reçus démo</h3>
+<div class="demo">📷 Pièce d'identité — Amadou Demo <button class="tiny admin-action">Voir</button></div><br>
+<div class="demo">🧾 Reçu démo — Dépôt #P021 <button class="tiny admin-action">Accepter le dépôt</button></div>
+<p class="message">Toutes les données affichées sont fictives et restent dans cette démonstration.</p>
+</div>
+</section>
+
+</main>
+<footer>Nova Bank Démo · Formation uniquement · Aucun prêt réel · Aucun paiement réel</footer>
+
+<script>
+const pages=[...document.querySelectorAll(".page")];
+function showPage(id){pages.forEach(p=>p.classList.toggle("active",p.id===id));window.scrollTo(0,0)}
+document.addEventListener("click",e=>{let b=e.target.closest("[data-page]");if(b)showPage(b.dataset.page)});
+
+document.getElementById("loginForm").onsubmit=e=>{
+e.preventDefault();let em=email.value,pa=password.value;
+if(em==="client@nova-demo.test"&&pa==="demo123")showPage("client");
+else if(em==="admin@nova-demo.test"&&pa==="admin123")showPage("admin");
+else loginMsg.textContent="Identifiants démo incorrects.";
+};
+
+document.getElementById("adminForm").onsubmit=e=>{
+e.preventDefault();
+if(adminEmail.value==="admin@nova-demo.test"&&adminPass.value==="admin123")showPage("admin");
+else adminMsg.textContent="Identifiants administrateur incorrects.";
+};
+
+document.getElementById("calc").onclick=()=>{
+let P=+amount.value,n=+duration.value,r=(+rate.value/100)/12;
+let m=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1),bal=P,rows="";
+for(let i=1;i<=n;i++){let interest=bal*r,capital=Math.min(P,m-interest);bal=Math.max(0,bal-capital);
+rows+=`<tr><td>${i}</td><td>${capital.toLocaleString("fr-FR",{maximumFractionDigits:0})} FCFA</td><td>${interest.toLocaleString("fr-FR",{maximumFractionDigits:0})} FCFA</td><td>${m.toLocaleString("fr-FR",{maximumFractionDigits:0})} FCFA</td><td>${bal.toLocaleString("fr-FR",{maximumFractionDigits:0})} FCFA</td></tr>`}
+results.classList.remove("hidden");
+results.innerHTML=`<div class="demo"><b>Résultat de la simulation</b><h3>Mensualité estimée : ${m.toLocaleString("fr-FR",{maximumFractionDigits:0})} FCFA</h3>Capital : ${P.toLocaleString("fr-FR")} FCFA · Durée : ${n} mois · Taux : ${rate.value}%</div><br><div style="overflow:auto"><table><tr><th>Mois</th><th>Capital</th><th>Intérêt</th><th>Mensualité</th><th>Solde</th></tr>${rows}</table></div>`;
+};
+
+document.getElementById("loanForm").onsubmit=e=>{
+e.preventDefault();loanStatus.innerHTML='<div class="demo">Veuillez patienter pour l’analyse de votre dossier…</div>';
+setTimeout(()=>{loanStatus.innerHTML='<div class="demo"><b>Demande approuvée (simulation).</b><br>Cette approbation est uniquement un résultat de démonstration.</div><br><button class="primary" data-page="approved">Continuer</button>'},1800);
+};
+
+document.querySelectorAll(".client-action").forEach(b=>b.onclick=()=>clientMsg.textContent="Opération enregistrée en mode démo uniquement.");
+document.querySelectorAll(".admin-action").forEach(b=>b.onclick=()=>{b.textContent="Action démo effectuée";b.disabled=true});
+document.getElementById("receipt").onchange=e=>{if(e.target.files[0])alert("Reçu démo chargé — simulation uniquement.")};
+</script>
+</body>
+</html>
